@@ -22,35 +22,40 @@ public class DoublyLinkedList {
 	
 	//insert a new node at beginning of list
 	public void insertFirst(int data) {
-		//set head to new node
 		NodeD newNode = new NodeD(data);
 		
-		//make next of new node as head and previous as NULL
+		//set head to new node
+		//make the new node as head and previous as NULL
 		newNode.next = head;
 		newNode.prev = null;
 		
+		//if the head wasn't null, then add newNode had head preview
 		if (head != null) {
 			head.prev = newNode;
 		}
+		//last step, set head node as newNode
 		head = newNode;
 	}
 	
-	//insert a new node at beginning of list
+	//insert a new node at end of list
 	public void insertLast(int data) {
 		NodeD newNode = new NodeD(data);
 		NodeD currNode = head;
 		newNode.next = null;
 		
+		//if the list is empty then set data has head
 		if(head == null) {
 			newNode.prev = null;
 			head = newNode;
 			return;
 		}
 
+		//traverse to the end
 		while(currNode.next != null) {
 			currNode = currNode.next;
 		}
 		
+		//add node to the end
 		currNode.next = newNode;
 		newNode.prev = currNode;
 	}
@@ -62,29 +67,24 @@ public class DoublyLinkedList {
 			return;
 		}
 		
+		//if the index is zero add node to the beginning
 		if (index == 0) {
 			insertFirst(data);
 		}
-//		NodeD newNode = new NodeD(data);
-//		//if index is 0 add to head
-//		if(index == 0) {
-//			newNode.prev = null;
-//			head = newNode;
-//			return;
-//		}
 		
 		
+		//traverse the list while counting to add node at specific index
 		int count = 0;
 		NodeD currNode = head;
 		while(currNode != null) {
+			//once index is reached add node
 			if(count == index) {
 				NodeD newNode = new NodeD(data);
 				newNode.next = currNode.next;
 				currNode.next = newNode;
 				newNode.prev = currNode;
 				break;
-
-			} else {
+			} else { //else keep traversing
 				currNode = currNode.next;
 				count++;
 			}
@@ -106,11 +106,12 @@ public class DoublyLinkedList {
 	public void deleteLast() {
 		NodeD currNode = head, prev = null;
 		
+		//traverse to the end of list
 		while(currNode.next != null) {
 			prev = currNode;
 			currNode = currNode.next;
 		}
-		
+		//remove last node from list
 		prev.next = null;
 	}
 	
@@ -121,12 +122,15 @@ public class DoublyLinkedList {
 			deleteFirst();
 		}
 
+
+		//traverse through list until we find key
 		NodeD currNode = head, prev = null;
 		while(currNode != null && currNode.data != key) {
 			prev = currNode;
 			currNode = currNode.next;
 		}
 		
+		//if currNode isn't null add node
 		if(currNode != null) {
 			prev.next = currNode.next;
 			currNode.next.prev = prev;
@@ -142,6 +146,7 @@ public class DoublyLinkedList {
 			deleteFirst();
 		}
 		
+		//traverse through list until index is reached
 		int count = 0;
 		NodeD currNode = head, prev = null;
 		while(currNode != null) {
@@ -156,8 +161,9 @@ public class DoublyLinkedList {
 			}
 		}
 		
+		//if currNode is null return error
 		if (currNode == null) {
-			System.out.print("\nError: index is out of bounds");
+			System.out.print("\nError: Index is out of bounds");
 		}
 	}
 	

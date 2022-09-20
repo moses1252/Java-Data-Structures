@@ -60,6 +60,7 @@ public class Main {
 	static void testDoublyLinkedList(DoublyLinkedList list) {
 		//enter data into the end of list
 		System.out.println("Add three values at the end of the list.");
+
 		list.insertLast(3);
 		list.insertLast(5);
 		list.insertLast(9);
