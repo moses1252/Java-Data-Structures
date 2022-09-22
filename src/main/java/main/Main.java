@@ -2,6 +2,8 @@ package main;
 
 import data_structures.DoublyLinkedList;
 import data_structures.SinglyLinkedList;
+import data_structures.StackUsingArrays;
+import data_structures.StackUsingLinkedList;
 
 public class Main {
 
@@ -15,6 +17,15 @@ public class Main {
 		DoublyLinkedList list2 = new DoublyLinkedList();
 		//method testing list
 		//testDoublyLinkedList(list2);
+		
+		StackUsingArrays list3 = new StackUsingArrays();
+		//method testing list
+		//testStackUsingArrays(list3);
+		
+		StackUsingLinkedList list4 = new StackUsingLinkedList();
+		//method testing list
+		//testStackUsingLinkedList(list4);
+		
 	}
 	
 	static void testSinglyLinkedList(SinglyLinkedList list) {
@@ -98,6 +109,72 @@ public class Main {
 		System.out.print("\n\nDelete the 1st index in the list");
 		list.deleteByIndex(2);
 		list.printList();
+	}
+	
+	static void testStackUsingArrays(StackUsingArrays list) {
+		//enter data into the list
+		System.out.println("Add values to the list");
+		list.push(2);
+		list.push(4);
+		list.push(8);
+		list.push(13);
+		list.push(202);
+		list.printStack();
+		
+		//remove data from the list
+		System.out.println("\n\nRemove values from the list");
+		list.pop();
+		list.pop();
+		list.printStack();
+		
+		//check if array is empty
+		System.out.println("\n\nCheck if list empty");
+		System.out.println(list.isEmpty());
+		
+		//return top value
+		System.out.println("\nReturn stack top value");
+		System.out.print(list.top());
+		
+		//count stack size
+		System.out.println("\n\nReturn stack size");
+		System.out.println(list.size());
+		
+		//print stack
+		System.out.print("\nList: ");
+		list.printStack();
+	}
+	
+	static void  testStackUsingLinkedList(StackUsingLinkedList list) {
+		//enter data into the list
+		System.out.println("Add values to the list");
+		list.push(2);
+		list.push(4);
+		list.push(8);
+		list.push(13);
+		list.push(202);
+		list.printStack();
+		
+		//remove data from the list
+		System.out.println("\n\nRemove values from the list");
+		list.pop();
+		list.pop();
+		list.printStack();
+		
+		//check if array is empty
+		System.out.println("\n\nCheck if list empty");
+		System.out.println(list.isEmpty());
+		
+		//return top value
+		System.out.println("\nReturn stack top value");
+		System.out.print(list.top());
+		
+		//count stack size
+		System.out.println("\n\nReturn stack size");
+		System.out.println(list.size());
+		
+		//print stack
+		System.out.print("\nList: ");
+		list.printStack();
 	}
 
 }
