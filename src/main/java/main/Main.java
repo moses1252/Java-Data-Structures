@@ -1,6 +1,7 @@
 package main;
 
 import data_structures.DoublyLinkedList;
+import data_structures.QueueUsingStacks;
 import data_structures.SinglyLinkedList;
 import data_structures.StackUsingArrays;
 import data_structures.StackUsingLinkedList;
@@ -11,21 +12,24 @@ public class Main {
 		//Uncomment testing methods calls to see results
 		//singly linked list
 		SinglyLinkedList list1 = new SinglyLinkedList();
-		//method testing list
+		//method testing linked list
 		//testSinglyLinkedList(list1);
 		
 		DoublyLinkedList list2 = new DoublyLinkedList();
-		//method testing list
+		//method testing linked list
 		//testDoublyLinkedList(list2);
 		
 		StackUsingArrays list3 = new StackUsingArrays();
-		//method testing list
+		//method testing stack
 		//testStackUsingArrays(list3);
 		
 		StackUsingLinkedList list4 = new StackUsingLinkedList();
-		//method testing list
+		//method testing stack
 		//testStackUsingLinkedList(list4);
 		
+		QueueUsingStacks list5 = new QueueUsingStacks();
+		//method testing queue
+		testQueueUsingStacks(list5);
 	}
 	
 	static void testSinglyLinkedList(SinglyLinkedList list) {
@@ -158,7 +162,6 @@ public class Main {
 		System.out.println("\n\nRemove values from the list");
 		list.pop();
 		list.pop();
-		list.printStack();
 		
 		//check if array is empty
 		System.out.println("\n\nCheck if list empty");
@@ -175,6 +178,18 @@ public class Main {
 		//print stack
 		System.out.print("\nList: ");
 		list.printStack();
+	}
+	
+	static void testQueueUsingStacks(QueueUsingStacks list) {
+		
+		list.enQueue(list, 1);
+		list.enQueue(list, 2);
+		list.enQueue(list, 3);
+		
+        /* Dequeue items */
+        System.out.print(list.deQueue(list) + " ");
+        System.out.print(list.deQueue(list) + " ");
+        System.out.println(list.deQueue(list) + " ");
 	}
 
 }
