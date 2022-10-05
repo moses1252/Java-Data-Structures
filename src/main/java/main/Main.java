@@ -1,5 +1,7 @@
 package main;
 
+import data_structures.BinaryNode;
+import data_structures.BinaryTree;
 import data_structures.DoublyLinkedList;
 import data_structures.QueueUsingStacks;
 import data_structures.SinglyLinkedList;
@@ -29,7 +31,12 @@ public class Main {
 		
 		QueueUsingStacks list5 = new QueueUsingStacks();
 		//method testing queue
-		testQueueUsingStacks(list5);
+		//testQueueUsingStacks(list5);
+		
+
+		BinaryTree list6 = new BinaryTree();
+		//method testing binary tree
+		testBinaryTree(list6);
 	}
 	
 	static void testSinglyLinkedList(SinglyLinkedList list) {
@@ -186,10 +193,57 @@ public class Main {
 		list.enQueue(list, 2);
 		list.enQueue(list, 3);
 		
-        /* Dequeue items */
+        // Dequeue items
         System.out.print(list.deQueue(list) + " ");
         System.out.print(list.deQueue(list) + " ");
         System.out.println(list.deQueue(list) + " ");
+	}
+	
+	static void testBinaryTree(BinaryTree tree) {
+		  
+        // create root
+		tree.setRoot(new BinaryNode(1));
+        //tree.setRoot(new binaryNode(1));
+  
+        /* following is the tree after above statement
+  
+              1
+            /   \
+          null  null     */
+  
+        tree.getRoot().left =new BinaryNode(2);
+        tree.getRoot().right = new BinaryNode(3);
+  
+        /* 2 and 3 become left and right children of 1
+               1
+            /     \
+          2        3
+        /   \     /  \
+      null null null null  */
+  
+        tree.getRoot().left.left = new BinaryNode(4);
+        tree.getRoot().left.right = new BinaryNode(5);
+        /* 4 becomes left child of 2
+                    1
+                /       \
+               2          3
+             /   \       /  \
+            4    null  null  null
+           /   \
+          null null
+         */
+
+        
+     System.out.println("The diameter of given binary tree is : " 
+     + tree.diameter());
+     
+     tree.getRoot().left.left.left = new BinaryNode(6);
+     System.out.println("The diameter of given binary tree is : " 
+     + tree.diameter());
+     
+     tree.getRoot().left.left.left.left = new BinaryNode(7);
+     System.out.println("The diameter of given binary tree is : " 
+     + tree.diameter());
 	}
 
 }
