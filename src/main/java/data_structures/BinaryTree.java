@@ -205,43 +205,87 @@ public class BinaryTree {
     	return root;
     }
     
-    
-    public static void printBinaryTree(BinaryNode root)
-    {
-        LinkedList<BinaryNode> treeLevel = new LinkedList<BinaryNode>();
-        treeLevel.add(root);
-        LinkedList<BinaryNode> temp = new LinkedList<BinaryNode>();
-        int counter = 0;
-        int height = heightOfTree(root) - 1;
-        // System.out.println(height);
-        double numberOfElements = (Math.pow(2, (height + 1)) - 1);
-        // System.out.println(numberOfElements);
-        while (counter <= height) {
-            BinaryNode removed = treeLevel.removeFirst();
-            if (temp.isEmpty()) {
-                printSpace(numberOfElements / Math.pow(2, counter + 1), removed);
-            }
-            else {
-                printSpace(numberOfElements / Math.pow(2, counter), removed);
-            }
-            if (removed == null) {
-                temp.add(null);
-                temp.add(null);
-            }
-            else {
-                temp.add(removed.left);
-                temp.add(removed.right);
-            }
+	public void printTree() {
+		if (root.right != null) {
+			printTree(root.right, true, "");
+		}
+
+		printNodeValue(root);
+
+		if (this.root.left != null) {
+			this.printTree(this.root.left, false, "");
+		}
+
+	}
+
+	private void printTree(BinaryNode node, boolean isRight, String indent) {
+
+		if (node.right != null) {         
+			printTree(node.right, true, indent + (isRight ? "        " : " |      "));
+		}
+		System.out.print(indent);
+
+		if (isRight) {
+			System.out.print(" /");
+		}
+		else {
+			System.out.print(" \\");
+		}
+		System.out.print("----- ");
+
+		printNodeValue(node);
+
+		if (node.left != null) {
+			printTree(node.left, false, indent + (isRight ? " |      " : "        "));
+		}
+	}
+
+	private void printNodeValue(BinaryNode node) {
+		if (node == null) {
+			System.out.print("<null>");
+		}
+		else {
+			System.out.print(node.key);
+			//System.out.print("(" + node.color + ")");
+		}
+		System.out.println();
+	}
  
-            if (treeLevel.isEmpty()) {
-                System.out.println("");
-                System.out.println("");
-                treeLevel = temp;
-                temp = new LinkedList<BinaryNode>();
-                counter++;
-            }
-        }
-    }
+//    public static void printBinaryTree(BinaryNode root) {
+//        LinkedList<BinaryNode> treeLevel = new LinkedList<BinaryNode>();
+//        treeLevel.add(root);
+//        LinkedList<BinaryNode> temp = new LinkedList<BinaryNode>();
+//        int counter = 0;
+//        int height = heightOfTree(root) - 1;
+//        // System.out.println(height);
+//        double numberOfElements = (Math.pow(2, (height + 1)) - 1);
+//        // System.out.println(numberOfElements);
+//        while (counter <= height) {
+//            BinaryNode removed = treeLevel.removeFirst();
+//            if (temp.isEmpty()) {
+//                printSpace(numberOfElements / Math.pow(2, counter + 1), removed);
+//            }
+//            else {
+//                printSpace(numberOfElements / Math.pow(2, counter), removed);
+//            }
+//            if (removed == null) {
+//                temp.add(null);
+//                temp.add(null);
+//            }
+//            else {
+//                temp.add(removed.left);
+//                temp.add(removed.right);
+//            }
+// 
+//            if (treeLevel.isEmpty()) {
+//                System.out.println("");
+//                System.out.println("");
+//                treeLevel = temp;
+//                temp = new LinkedList<BinaryNode>();
+//                counter++;
+//            }
+//        }
+//    }
     
 //    public static void printBinaryTree(BinaryNode root) {
 //    	LinkedList<BinaryNode> treeLevel = new LinkedList<BinaryNode>();

@@ -242,11 +242,20 @@ public class Main {
         //traverse tree in post-order
         System.out.print("\nPrint Tree: level-order traversal: ");
         bt.traverseLevelOrder();
-	
         
-      //traverse tree in post-order
-        System.out.print("\n\nprint tree: \n\n");
-        bt.printBinaryTree(bt.getRoot());
+        //print tree
+        System.out.print("\n\n");
+        bt.printTree();
+        
+        //make a randomized tree
+        BinaryTree randTree = new BinaryTree();
+        for(int i = 0; i < 40; i++) {
+        	int rand = (int) ((Math.random() * 200) + 1);
+        	randTree.add(rand);
+        }
+        //print tree
+        System.out.print("\n\nPrint random tree: \n");
+        randTree.printTree();
 	}
 
 }
