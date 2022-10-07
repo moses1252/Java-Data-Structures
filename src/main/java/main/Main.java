@@ -1,6 +1,4 @@
 package main;
-
-import data_structures.BinaryNode;
 import data_structures.BinaryTree;
 import data_structures.DoublyLinkedList;
 import data_structures.QueueUsingStacks;
@@ -35,7 +33,7 @@ public class Main {
 		
 
 		BinaryTree list6 = new BinaryTree();
-		//method testing binary tree
+		//method testing queue
 		testBinaryTree(list6);
 	}
 	
@@ -188,62 +186,67 @@ public class Main {
 	}
 	
 	static void testQueueUsingStacks(QueueUsingStacks list) {
-		
+		//add data into queue
 		list.enQueue(list, 1);
 		list.enQueue(list, 2);
 		list.enQueue(list, 3);
 		
-        // Dequeue items
+        // Dequeue items and print
         System.out.print(list.deQueue(list) + " ");
         System.out.print(list.deQueue(list) + " ");
         System.out.println(list.deQueue(list) + " ");
 	}
 	
-	static void testBinaryTree(BinaryTree tree) {
-		  
-        // create root
-		tree.setRoot(new BinaryNode(1));
-        //tree.setRoot(new binaryNode(1));
-  
-        /* following is the tree after above statement
-  
-              1
-            /   \
-          null  null     */
-  
-        tree.getRoot().left =new BinaryNode(2);
-        tree.getRoot().right = new BinaryNode(3);
-  
-        /* 2 and 3 become left and right children of 1
-               1
-            /     \
-          2        3
-        /   \     /  \
-      null null null null  */
-  
-        tree.getRoot().left.left = new BinaryNode(4);
-        tree.getRoot().left.right = new BinaryNode(5);
-        /* 4 becomes left child of 2
-                    1
-                /       \
-               2          3
-             /   \       /  \
-            4    null  null  null
-           /   \
-          null null
-         */
+	static void testBinaryTree(BinaryTree bt) {
+		//add data into tree
+		System.out.println("Add values to binary search tree: ");
+		for(int i = 1; i < 7; i++) {
+			bt.add(i);
+			System.out.print(i + " ");
+		}
 
+		//print height and diameter
+        System.out.println("\nHeight of tree " + bt.height(bt.getRoot()));
+        System.out.println("Diameter of tree " + bt.diameter());
+
+        //add more values into tree and check if diameter changes
+		System.out.println("\nAdd more values to binary search tree to test diameter: ");
+	  	for(int i = -1; i > -6; i--) {
+				bt.add(i);
+				System.out.print(i + " ");
+		}
+        System.out.println("Height of tree " + bt.height(bt.getRoot()));
+        System.out.println("Diameter of tree " + bt.diameter());
         
-     System.out.println("The diameter of given binary tree is : " 
-     + tree.diameter());
-     
-     tree.getRoot().left.left.left = new BinaryNode(6);
-     System.out.println("The diameter of given binary tree is : " 
-     + tree.diameter());
-     
-     tree.getRoot().left.left.left.left = new BinaryNode(7);
-     System.out.println("The diameter of given binary tree is : " 
-     + tree.diameter());
+        //find a value in the tree
+        //try finding a value thats not in the tree
+        System.out.print("\nIs the value 8 in the tree: " + bt.containsBinaryNode(6));
+        System.out.print("\nIs the value 15 in the tree: " + bt.containsBinaryNode(15));
+        
+        //delete the value 6 from the list
+        System.out.println("\nDelete the value -6 from the tree");
+        bt.delete(-6);
+
+        //traverse tree in in-order
+        System.out.print("\nPrint Tree: in-order traversal: ");
+        bt.traverseInOrder(bt.getRoot());
+        
+        //traverse tree in post-order
+        System.out.print("\nPrint Tree: pre-order traversal: ");
+        bt.traversePreOrder(bt.getRoot());
+        
+        //traverse tree in post-order
+        System.out.print("\nPrint Tree: post-order traversal: ");
+        bt.traversePostOrder(bt.getRoot());
+        
+        //traverse tree in post-order
+        System.out.print("\nPrint Tree: level-order traversal: ");
+        bt.traverseLevelOrder();
+	
+        
+      //traverse tree in post-order
+        System.out.print("\n\nprint tree: \n\n");
+        bt.printBinaryTree(bt.getRoot());
 	}
 
 }
