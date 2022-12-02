@@ -67,6 +67,21 @@ public class BinaryTree {
         // If tree is not empty then height = 1 + max of left height and right heights
         return (1 + Math.max(height(node.left), height(node.right)));
     }
+	
+    public static boolean isBalanced(BinaryNode root) {
+	if (root == null) return true;
+	    
+    }
+
+    private isBalancedHelper(BinaryNode node) {
+	if (node == null) return 0;
+	int left = isBalancedHelper(node.left);
+	int right = isBalancedHelper(node.right);
+	int checkHeight = Math.abs(left - right);
+	
+	if (checkHeight > 1 || left == -1 || right == -1) return -1;
+	return 1 + Math.max(left, right);
+    }
     
     public void add(int key) {
     	root = addRecursive(root, key);
